@@ -1,13 +1,35 @@
-# php_memcache.dll for php 7 
-## MSVC14 (14.00.23918.0) Compiled with php-src 7.0.6, php_memcache 3.0.9-dev
+# php-7.0.x_memcache.dll
+#### 2016-05-18 MSVC14 update 2 (14.00.23918.0) Compiled with:
 
- - https://github.com/php/php-src/tree/PHP-7.0.6
- - https://github.com/websupport-sk/pecl-memcache.git
+ - https://github.com/php/php-src/tree/PHP-7.0.6 
+ - https://github.com/websupport-sk/pecl-memcache/tree/NON_BLOCKING_IO_php7 3.0.9
 
+# php-7.1.x_memcache.dll
+#### 2016-12-08 MSVC14 update 3 (14.00.25420.1) Compiled with:
+
+ - https://github.com/php/php-src/tree/PHP-7.1.0
+ - https://github.com/websupport-sk/pecl-memcache/tree/NON_BLOCKING_IO_php7 3.0.9
+
+### Makefile build changes
+* ###### LDFLAGS 
+  * `+ /LTCG `
+* ###### CFLAGS
+  * `- /guard:cf`
+  * `+ /GS- /GL`
+
+# php-7.1.x_memcache.dll
+#### 2016-12-20 MSVC15 RC (15.0.25914.0) Compiled with:
+
+ - https://github.com/php/php-src/tree/PHP-7.1 php-7.1.1-dev
+ - https://github.com/websupport-sk/pecl-memcache/tree/NON_BLOCKING_IO_php7 3.0.9
+
+_See [discution](http://stackoverflow.com/questions/34952502/memcache-for-php7-on-windows/) on stackoverflow_
+
+-----
 Only tested (and working fine) on **x64 nts**.  
 See my ```memcache.ini``` configuration
 
-I’ve noticed __2 bugs__ when implementing memcache session.handler
+2016-05-18 : I’ve noticed __2 bugs__ when implementing memcache session.handler
 ```
 session.save_handler = memcache
 session.save_path = "tcp://127.0.0.1:11211"
